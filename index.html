@@ -48,7 +48,45 @@
         border-radius: 10px;
         box-shadow: 0 2px 6px rgba(0,0,0,0.15);
       }
+      form {
+        margin-top: 30px;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+      input, textarea, button {
+        width: 100%;
+        margin: 10px 0;
+        padding: 10px;
+        font-size: 1em;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      button {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #218838;
+      }
     </style>
+    <script>
+      function inviaMail() {
+        const nome = document.getElementById("nome").value;
+        const email = document.getElementById("email").value;
+        const messaggio = document.getElementById("messaggio").value;
+
+        const body = encodeURIComponent(
+          `Richiesta APK Orari Treni+\n\nNome: ${nome}\nEmail: ${email}\nMessaggio:\n${messaggio}`
+        );
+
+        const mailto = `mailto:walter.foglia@gmail.com?subject=Richiesta APK Orari Treni+&body=${body}`;
+        window.location.href = mailto;
+      }
+    </script>
   </head>
   <body>
     <header>
@@ -62,13 +100,20 @@
       partenze/arrivi in stazione, ritardi, binari, posizione attuale dei treni e molto altro. Il progetto è completamente indipendente e non affiliato con Trenitalia o Italo.</p>
 
       <p><strong>Vuoi provarla?</strong><br />
-      Scrivi a <a href="mailto:walter.foglia@gmail.com">walter.foglia@gmail.com</a> per ricevere l’APK e partecipare al test!</p>
+      Compila il modulo qui sotto oppure scrivi a <a href="mailto:walter.foglia@gmail.com">walter.foglia@gmail.com</a></p>
 
       <p><strong>🇬🇧 Description:</strong><br />
       Orari Treni+ is an Android app in development that lets you view live train schedules, delays, tracks, and train positions across Italy. It's an independent project, not affiliated with Trenitalia or Italo.</p>
 
       <p><strong>Want to test it?</strong><br />
-      Contact <a href="mailto:walter.foglia@gmail.com">walter.foglia@gmail.com</a> to receive the APK and join the beta!</p>
+      Fill the form below or email <a href="mailto:walter.foglia@gmail.com">walter.foglia@gmail.com</a> to request the APK!</p>
+
+      <form onsubmit="inviaMail(); return false;">
+        <input type="text" id="nome" placeholder="Il tuo nome" required />
+        <input type="email" id="email" placeholder="La tua email" required />
+        <textarea id="messaggio" rows="4" placeholder="Scrivi un messaggio (facoltativo)"></textarea>
+        <button type="submit">Richiedi APK</button>
+      </form>
 
       <div class="screenshots">
         <img src="1.jpg" alt="Screenshot 1" />
